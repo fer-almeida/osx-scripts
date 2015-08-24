@@ -27,10 +27,6 @@ if [ $(id -u) -eq 0 ]; then
 	if [ -d /Applications/Photo\ Booth.app/ ]; then rm -rf /Applications/Photo\ Booth.app/; fi
 	if [ -d /Applications/Stickies.app/ ]; then rm -rf /Applications/Stickies.app/; fi
 	if [ -d /Applications/DVD\ Player.app/ ]; then rm -rf /Applications/DVD\ Player.app/; fi
-	if [ -d /Applications/Game\ Center.app/ ]; then rm -rf /Applications/Game\ Center.app/; fi
-	if [ -d /Applications/Microsoft\ Messenger.app/ ]; then rm -rf /Applications/Microsoft\ Messenger.app/; fi
-	if [ -d /Applications/Microsoft\ Communicator.app/ ]; then rm -rf /Applications/Microsoft\ Communicator.app/; fi
-	if [ -d /Applications/Remote\ Desktop\ Connection.app/ ]; then rm -rf /Applications/Remote\ Desktop\ Connection.app/; fi
 	echo -ne "\r[ OK ] Useless Apps\n"
 	
 	# Reorganize Apps
@@ -43,8 +39,10 @@ if [ $(id -u) -eq 0 ]; then
 	if [ -d /Applications/Font\ Book.app/ ]; then mv /Applications/Font\ Book.app/ /Applications/Utilities/; fi
 	if [ -d /Applications/Dictionary.app/ ]; then mv /Applications/Dictionary.app/ /Applications/Utilities/; fi
 	if [ -d /Applications/QuickTime\ Player.app/ ]; then mv /Applications/QuickTime\ Player.app/ /Applications/Utilities/; fi
-	if [ -d /Applications/Microsoft\ Remote\ Desktop.app/ ]; then mv /Applications/Microsoft\ Remote\ Desktop.app/ /Applications/Utilities/; fi
 	echo -ne "\r[ OK ] Reorganize Apps\n"
+	
+	# Enable trackpad tap on login screen
+	defaults write /Library/Preferences/.GlobalPreferences com.apple.mouse.tapBehavior -int 1
 	
 	echo -e "\nFinished. It is highly recommended to restart OS X."
 	read -p "Restart now? (y/n) "
